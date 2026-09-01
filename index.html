@@ -29,7 +29,6 @@
   }
   body { background: var(--bg); color: var(--text); display: flex; min-height: 100vh; }
 
-  /* Loading Spinner */
   .loading-overlay {
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(255,255,255,0.95); display: flex;
@@ -42,7 +41,6 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* Sidebar */
   .sidebar {
     width: 270px; background: linear-gradient(180deg, #1e1b4b 0%, #312e81 100%);
     color: white; padding: 24px 0; position: fixed; height: 100vh; overflow-y: auto;
@@ -59,13 +57,11 @@
   .nav-item.active { background: rgba(255,255,255,0.12); border-left-color: var(--primary-light); }
   .nav-item .icon { font-size: 20px; }
 
-  /* Main */
   .main { margin-left: 270px; flex: 1; padding: 28px 36px; }
   .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
   .topbar h2 { font-size: 28px; font-weight: 800; }
   .topbar .date { color: var(--muted); font-size: 14px; }
 
-  /* Stats */
   .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 28px; }
   .stat-card {
     background: var(--card); padding: 22px; border-radius: var(--radius); box-shadow: var(--shadow);
@@ -86,7 +82,6 @@
   .bg-info { background: linear-gradient(135deg, var(--info), #2563eb); }
   .bg-danger { background: linear-gradient(135deg, var(--danger), #dc2626); }
 
-  /* Panels */
   .panel {
     background: var(--card); border-radius: var(--radius); padding: 24px;
     box-shadow: var(--shadow); margin-bottom: 24px; border: 1px solid var(--border);
@@ -94,7 +89,6 @@
   .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
   .panel-header h3 { font-size: 18px; font-weight: 700; }
 
-  /* Buttons */
   .btn {
     padding: 9px 18px; border: none; border-radius: 8px; cursor: pointer;
     font-size: 14px; font-weight: 600; transition: all 0.2s; display: inline-flex;
@@ -113,7 +107,6 @@
   .btn-lg { padding: 12px 24px; font-size: 15px; }
   .btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-  /* Tables */
   table { width: 100%; border-collapse: collapse; }
   th, td { padding: 14px 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 14px; }
   th { background: #f8fafc; font-weight: 700; color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
@@ -125,7 +118,6 @@
   .badge-info { background: var(--info-light); color: #1e40af; }
   .badge-primary { background: #e0e7ff; color: #3730a3; }
 
-  /* Forms */
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .form-group { margin-bottom: 16px; }
   .form-group label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: var(--text); }
@@ -137,7 +129,6 @@
     outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
   }
 
-  /* Modal */
   .modal-overlay {
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(15,23,42,0.6); backdrop-filter: blur(4px);
@@ -157,16 +148,13 @@
   .modal h3 { margin-bottom: 20px; font-size: 20px; font-weight: 700; }
   .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
 
-  /* Section */
   .section { display: none; }
   .section.active { display: block; animation: fadeIn 0.3s; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-  /* Empty */
   .empty { text-align: center; padding: 50px 20px; color: var(--muted); }
   .empty .icon { font-size: 56px; margin-bottom: 16px; opacity: 0.5; }
 
-  /* Toast */
   .toast {
     position: fixed; bottom: 24px; right: 24px; background: var(--text); color: white;
     padding: 14px 22px; border-radius: 10px; box-shadow: var(--shadow-lg);
@@ -177,7 +165,6 @@
   .toast.error { background: var(--danger); }
   .toast.success { background: var(--success); }
 
-  /* Settings Tabs */
   .settings-tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 2px solid var(--border); overflow-x: auto; }
   .settings-tab {
     padding: 10px 20px; cursor: pointer; border-bottom: 2px solid transparent;
@@ -196,7 +183,6 @@
   .color-option:hover { transform: scale(1.1); }
   .color-option.selected { border-color: var(--text); box-shadow: 0 0 0 2px white inset; }
 
-  /* TASK CARDS */
   .task-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
   .task-card {
     background: var(--card); border-radius: 16px; padding: 24px;
@@ -228,7 +214,6 @@
   .mini-stat.warning { background: var(--warning-light); }
   .mini-stat.warning .ms-value { color: #92400e; }
 
-  /* Big progress */
   .big-progress { margin: 16px 0; }
   .big-progress-header { display: flex; justify-content: space-between; margin-bottom: 8px; align-items: center; }
   .big-progress-percent { font-size: 28px; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--success)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -251,7 +236,6 @@
   .task-card-meta { display: flex; gap: 12px; font-size: 12px; color: var(--muted); }
   .task-card-meta span { display: flex; align-items: center; gap: 4px; }
 
-  /* Family cards */
   .family-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
   .family-card {
     background: var(--card); border-radius: var(--radius); padding: 20px;
@@ -267,7 +251,6 @@
   .family-card-info h4 { font-size: 16px; font-weight: 700; }
   .family-card-info p { font-size: 12px; color: var(--muted); }
 
-  /* Task Detail Modal */
   .detail-header {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white; padding: 24px; border-radius: 14px; margin-bottom: 20px;
@@ -282,7 +265,6 @@
   .detail-stat .ds-label { font-size: 11px; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.5px; }
   .detail-stat .ds-value { font-size: 18px; font-weight: 800; margin-top: 4px; }
 
-  /* Month Timeline */
   .month-timeline { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin: 16px 0; }
   .month-box {
     background: #f8fafc; padding: 14px; border-radius: 10px; border: 1px solid var(--border);
@@ -295,7 +277,6 @@
   .month-box .mb-amount { font-size: 15px; font-weight: 800; margin-top: 4px; }
   .month-box .mb-status { font-size: 10px; margin-top: 4px; font-weight: 700; }
 
-  /* Family detail */
   .family-detail-header {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white; padding: 24px; border-radius: 14px; margin-bottom: 20px;
@@ -306,14 +287,12 @@
     display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 800;
   }
 
-  /* Info box */
   .info-box {
     background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
     padding: 16px; border-radius: 10px; border-left: 4px solid var(--info);
     margin: 12px 0; font-size: 13px;
   }
 
-  /* Calc box */
   .calc-box {
     background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     padding: 18px; border-radius: 12px; margin-top: 12px;
@@ -322,11 +301,9 @@
   .calc-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; }
   .calc-row.highlight { font-weight: 700; color: var(--primary); font-size: 17px; border-top: 2px dashed #7dd3fc; padding-top: 10px; margin-top: 8px; }
 
-  /* Section divider */
   .section-divider { margin: 24px 0 16px; font-size: 14px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
   .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-  /* Sync indicator */
   .sync-indicator {
     position: fixed; top: 20px; right: 20px; padding: 8px 16px;
     background: var(--success); color: white; border-radius: 8px;
@@ -351,12 +328,10 @@
 </head>
 <body>
 
-<!-- Loading Overlay -->
 <div class="loading-overlay" id="loadingOverlay">
   <div class="loading-spinner"></div>
 </div>
 
-<!-- Sync Indicator -->
 <div class="sync-indicator" id="syncIndicator">
   <span>✓</span>
   <span id="syncText">Synced with Firebase</span>
@@ -392,7 +367,7 @@
           <div class="value" id="totalCollected">₹0</div>
           <div class="sub">All time</div>
         </div>
-        <div class="icon-box bg-success"></div>
+        <div class="icon-box bg-success">💰</div>
       </div>
       <div class="stat-card">
         <div>
@@ -405,7 +380,7 @@
       <div class="stat-card">
         <div>
           <div class="label">Cash in Hand</div>
-          <div class="value" id="cashInHand">₹0</div>
+          <div class="value" id="cashInHand">0</div>
           <div class="sub">Available</div>
         </div>
         <div class="icon-box bg-info">💼</div>
@@ -413,10 +388,10 @@
       <div class="stat-card">
         <div>
           <div class="label">Bank Balance</div>
-          <div class="value" id="bankBalance">₹0</div>
+          <div class="value" id="bankBalance">0</div>
           <div class="sub">All accounts</div>
         </div>
-        <div class="icon-box bg-primary">🏦</div>
+        <div class="icon-box bg-primary"></div>
       </div>
     </div>
 
@@ -501,11 +476,11 @@
         </div>
         <div class="stat-card">
           <div><div class="label">Total In</div><div class="value" id="totalIn">₹0</div></div>
-          <div class="icon-box bg-success"></div>
+          <div class="icon-box bg-success">📥</div>
         </div>
         <div class="stat-card">
           <div><div class="label">Total Out</div><div class="value" id="totalOut">₹0</div></div>
-          <div class="icon-box bg-danger">📤</div>
+          <div class="icon-box bg-danger"></div>
         </div>
       </div>
       <table>
@@ -648,8 +623,8 @@
       <div class="calc-row"><span>Total Amount</span><span id="calcTotal">₹0</span></div>
       <div class="calc-row"><span>Participating Families</span><span id="calcFamilies">0</span></div>
       <div class="calc-row"><span>Total Members</span><span id="calcMembers">0</span></div>
-      <div class="calc-row"><span>💵 Per Member Amount</span><span id="calcPerMember">₹0</span></div>
-      <div class="calc-row"><span>⏱️ Duration</span><span id="calcDuration">0 months</span></div>
+      <div class="calc-row"><span> Per Member Amount</span><span id="calcPerMember">₹0</span></div>
+      <div class="calc-row"><span>️ Duration</span><span id="calcDuration">0 months</span></div>
       <div class="calc-row highlight"><span>📅 End Date</span><span id="calcEndDate">-</span></div>
     </div>
     
@@ -737,12 +712,10 @@
 
 <!-- Firebase SDK -->
 <script type="module">
-// Import Firebase functions
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, Timestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js';
 
-// Your Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAiS8upZJ-VMoQQCyizmmra1GXJTDxVzug",
   authDomain: "sn-foundation-b645f.firebaseapp.com",
@@ -753,16 +726,13 @@ const firebaseConfig = {
   measurementId: "G-0J8E055MON"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const analytics = getAnalytics(app);
 
-// Make Firebase available globally
 window.firebaseApp = app;
 window.db = db;
 
-// Global data
 window.data = {
   families: [],
   tasks: [],
@@ -783,7 +753,6 @@ window.data = {
   }
 };
 
-// Collection references
 const collections = {
   families: collection(db, 'families'),
   tasks: collection(db, 'tasks'),
@@ -793,12 +762,10 @@ const collections = {
   settings: doc(db, 'settings', 'app')
 };
 
-// Show/hide loading
 function showLoading(show) {
   document.getElementById('loadingOverlay').style.display = show ? 'flex' : 'none';
 }
 
-// Show sync indicator
 function showSyncIndicator(message = 'Synced with Firebase', isError = false) {
   const indicator = document.getElementById('syncIndicator');
   const syncText = document.getElementById('syncText');
@@ -807,7 +774,6 @@ function showSyncIndicator(message = 'Synced with Firebase', isError = false) {
   setTimeout(() => indicator.classList.remove('show'), 3000);
 }
 
-// Toast notification
 window.toast = function(msg, type = 'info') {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -815,7 +781,6 @@ window.toast = function(msg, type = 'info') {
   setTimeout(() => t.classList.remove('show'), 2500);
 };
 
-// Format currency
 window.fmt = function(n) {
   return window.data.settings.currency + Number(n||0).toLocaleString('en-IN');
 };
@@ -828,14 +793,11 @@ window.fmtShort = function(n) {
   return window.fmt(n);
 };
 
-// Generate UID
 window.uid = function() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2,7);
 };
 
-// ============ FIREBASE DATA SYNC ============
 function setupRealtimeListeners() {
-  // Listen to families
   onSnapshot(collections.families, (snapshot) => {
     window.data.families = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     renderAll();
@@ -844,7 +806,6 @@ function setupRealtimeListeners() {
     showSyncIndicator('Error syncing families', true);
   });
 
-  // Listen to tasks
   onSnapshot(collections.tasks, (snapshot) => {
     window.data.tasks = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     renderAll();
@@ -853,7 +814,6 @@ function setupRealtimeListeners() {
     showSyncIndicator('Error syncing tasks', true);
   });
 
-  // Listen to payments
   onSnapshot(collections.payments, (snapshot) => {
     window.data.payments = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     renderAll();
@@ -862,7 +822,6 @@ function setupRealtimeListeners() {
     showSyncIndicator('Error syncing payments', true);
   });
 
-  // Listen to banks
   onSnapshot(collections.banks, (snapshot) => {
     window.data.banks = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     renderAll();
@@ -870,7 +829,6 @@ function setupRealtimeListeners() {
     console.error('Error listening to banks:', error);
   });
 
-  // Listen to cash
   onSnapshot(collections.cash, (snapshot) => {
     window.data.cash = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     renderAll();
@@ -878,21 +836,9 @@ function setupRealtimeListeners() {
     console.error('Error listening to cash:', error);
   });
 
-  // Listen to settings
-  onSnapshot(collections.settings, (doc) => {
-    if (doc.exists()) {
-      window.data.settings = { ...window.data.settings, ...doc.data() };
-      loadSettings();
-      renderAll();
-    }
-  }, (error) => {
-    console.log('No settings found, using defaults');
-  });
-
   showSyncIndicator('Connected to Firebase');
 }
 
-// ============ CRUD OPERATIONS ============
 window.saveFamily = async function() {
   const name = document.getElementById('fm_name').value.trim();
   const members = parseInt(document.getElementById('fm_members').value) || 1;
@@ -998,7 +944,6 @@ window.savePayment = async function() {
     
     await addDoc(collections.payments, paymentData);
     
-    // Update bank balance if applicable
     const method = document.getElementById('pm_method').value;
     const bankId = document.getElementById('pm_bank').value;
     if (method !== 'Cash' && bankId) {
@@ -1109,16 +1054,16 @@ window.deleteFamily = async function(id) {
 window.deleteTask = async function(id) {
   if (!confirm('Delete this task and all its payments?')) return;
   try {
-    // Delete task
     await deleteDoc(doc(db, 'tasks', id));
-    // Delete associated payments
     const paymentsQuery = query(collections.payments);
     const paymentsSnapshot = await getDocs(paymentsQuery);
-    paymentsSnapshot.forEach(async (doc) => {
-      if (doc.data().taskId === id) {
-        await deleteDoc(doc.ref);
+    const deletePromises = [];
+    paymentsSnapshot.forEach((docSnapshot) => {
+      if (docSnapshot.data().taskId === id) {
+        deletePromises.push(deleteDoc(docSnapshot.ref));
       }
     });
+    await Promise.all(deletePromises);
     toast('Task deleted', 'success');
   } catch (error) {
     console.error('Error deleting task:', error);
@@ -1148,7 +1093,6 @@ window.deleteCash = async function(id) {
   }
 };
 
-// Helper to clear form fields
 function clearForm(ids) {
   ids.forEach(id => {
     const el = document.getElementById(id);
@@ -1156,7 +1100,6 @@ function clearForm(ids) {
   });
 }
 
-// ============ CORE CALCULATIONS (Same as before) ============
 window.getAssignedFamilies = function(task) {
   if (task.assignment === 'all') return window.data.families;
   return window.data.families.filter(f => (task.assignedFamilies || []).includes(f.id));
@@ -1248,7 +1191,6 @@ window.getFamilyPaidMonths = function(task, familyId) {
   return [...new Set(window.data.payments.filter(p => p.taskId === task.id && p.familyId === familyId).map(p => p.month))];
 };
 
-// ============ UI FUNCTIONS ============
 window.showSection = function(id, el) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -1386,9 +1328,6 @@ window.saveSettings = function() {
   window.data.settings.defaultTaskDuration = parseInt(document.getElementById('defaultTaskDuration').value) || 6;
   window.data.settings.defaultAmount = parseFloat(document.getElementById('defaultAmount').value) || 100000;
   
-  // Save to Firebase
-  // Note: First time will create, subsequent will update
-  // For simplicity, we're just using local storage for settings
   localStorage.setItem('collectionSettings', JSON.stringify(window.data.settings));
   
   applySettings();
@@ -1409,7 +1348,6 @@ window.changeTheme = function(color, el) {
 };
 
 window.loadSettings = function() {
-  // Try to load from Firebase first, then localStorage
   const saved = localStorage.getItem('collectionSettings');
   if (saved) {
     const parsed = JSON.parse(saved);
@@ -1459,10 +1397,7 @@ window.exportCSV = function() {
   window.toast('CSV exported', 'success');
 };
 
-// ============ RENDERING FUNCTIONS ============
-// [Include all the rendering functions from the previous code - they remain the same]
-// For brevity, I'll include the key ones:
-
+// FULL RENDERING FUNCTIONS
 window.renderAll = function() {
   renderDashboard();
   renderFamilies();
@@ -1561,19 +1496,17 @@ function buildTaskCard(task) {
       </div>
       
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-size:12px;">
-        <span style="color:var(--muted);">⏱️ ${task.durationMonths} months • Ends: ${endDate.toLocaleDateString('en-US',{month:'short',year:'numeric'})}</span>
+        <span style="color:var(--muted);">️ ${task.durationMonths} months • Ends: ${endDate.toLocaleDateString('en-US',{month:'short',year:'numeric'})}</span>
         <button class="btn btn-sm btn-primary" onclick="event.stopPropagation();window.quickPayTask('${task.id}')"> Pay</button>
       </div>
     </div>
   `;
 }
 
-// Add remaining render functions (renderFamilies, renderTasks, renderPayments, renderBanks, renderCash, renderReports)
-// And detail modal functions (openTaskDetail, openFamilyDetail, quickPayTask, quickPayFamily)
-// These are the same as in the previous code
-
 function renderFamilies() {
   const grid = document.getElementById('familiesGrid');
+  if (!grid) return;
+  
   grid.innerHTML = window.data.families.length ? window.data.families.map(f => {
     const initial = f.name.charAt(0).toUpperCase();
     let totalObligation = 0, totalPaid = 0;
@@ -1620,13 +1553,18 @@ function renderFamilies() {
 }
 
 function renderTasks() {
-  document.getElementById('allTaskCards').innerHTML = window.data.tasks.length 
+  const container = document.getElementById('allTaskCards');
+  if (!container) return;
+  
+  container.innerHTML = window.data.tasks.length 
     ? window.data.tasks.map(t => buildTaskCard(t)).join('')
     : '<div class="empty" style="grid-column:1/-1;"><div class="icon">📋</div>No tasks yet</div>';
 }
 
 function renderPayments() {
   const tbody = document.getElementById('paymentsTable');
+  if (!tbody) return;
+  
   const sorted = [...window.data.payments].sort((a,b) => new Date(b.date) - new Date(a.date));
   tbody.innerHTML = sorted.length ? sorted.map(p => {
     const family = window.data.families.find(f => f.id === p.familyId);
@@ -1638,20 +1576,22 @@ function renderPayments() {
       <td>${p.month || '-'}</td>
       <td><strong>${window.fmt(p.amount)}</strong></td>
       <td><span class="badge badge-info">${p.method}</span></td>
-      <td><button class="btn btn-danger btn-sm" onclick="window.deletePayment('${p.id}')">🗑️</button></td>
+      <td><button class="btn btn-danger btn-sm" onclick="window.deletePayment('${p.id}')">️</button></td>
     </tr>`;
   }).join('') : '<tr><td colspan="7" class="empty"><div class="icon">💵</div>No payments recorded</td></tr>';
 }
 
 function renderBanks() {
   const tbody = document.getElementById('banksTable');
+  if (!tbody) return;
+  
   tbody.innerHTML = window.data.banks.length ? window.data.banks.map(b => `
     <tr>
       <td><strong>${b.name}</strong><br><small style="color:var(--muted)">IFSC: ${b.ifsc||'-'}</small></td>
       <td>${b.acc}</td>
       <td>${b.holder||'-'}</td>
       <td><strong>${window.fmt(b.balance)}</strong></td>
-      <td><button class="btn btn-danger btn-sm" onclick="window.deleteBank('${b.id}')">️</button></td>
+      <td><button class="btn btn-danger btn-sm" onclick="window.deleteBank('${b.id}')">🗑️</button></td>
     </tr>
   `).join('') : '<tr><td colspan="5" class="empty"><div class="icon">🏦</div>No bank accounts added</td></tr>';
 }
@@ -1664,6 +1604,8 @@ function renderCash() {
   document.getElementById('totalOut').textContent = window.fmt(outTotal);
 
   const tbody = document.getElementById('cashTable');
+  if (!tbody) return;
+  
   const sorted = [...window.data.cash].sort((a,b) => new Date(b.date) - new Date(a.date));
   tbody.innerHTML = sorted.length ? sorted.map(c => `
     <tr>
@@ -1678,6 +1620,8 @@ function renderCash() {
 
 function renderReports() {
   const tbody = document.getElementById('reportTable');
+  if (!tbody) return;
+  
   tbody.innerHTML = window.data.families.length ? window.data.families.map(f => {
     let assigned = 0, paid = 0;
     window.data.tasks.forEach(t => {
@@ -1705,18 +1649,296 @@ function renderReports() {
   }).join('') : '<tr><td colspan="6" class="empty">No data</td></tr>';
 }
 
-// Detail modals (simplified versions - include full versions from previous code)
+// TASK DETAIL MODAL - FULL IMPLEMENTATION
 window.openTaskDetail = function(taskId) {
   const task = window.data.tasks.find(t => t.id === taskId);
   if (!task) return;
-  // Build detailed content (use the full version from previous code)
-  alert('Task Detail: ' + task.name + '\n(Full implementation from previous code)');
+  
+  const families = window.getAssignedFamilies(task);
+  const total = window.getTaskTotalExpected(task);
+  const collected = window.getTaskCollected(task);
+  const pending = Math.max(0, total - collected);
+  const percent = window.getTaskPercent(task);
+  const perMember = window.getPerMemberAmount(task);
+  const totalMembers = window.getTotalMembers(task);
+  const months = window.getMonthsList(task);
+  const endDate = window.getEndDate(task);
+  const status = window.getTaskStatus(task);
+  
+  const familyRows = families.map(f => {
+    const obligation = window.getFamilyTotalObligation(task, f.id);
+    const monthly = window.getFamilyMonthlyInstallment(task, f.id);
+    const paid = window.getFamilyPaidForTask(task, f.id);
+    const famPending = Math.max(0, obligation - paid);
+    const pendingMonths = window.getFamilyPendingMonths(task, f.id);
+    const famPercent = obligation > 0 ? Math.min(100, (paid/obligation)*100) : 0;
+    
+    return `
+      <tr>
+        <td><strong style="cursor:pointer;color:var(--primary);" onclick="window.closeModal('taskDetailModal');setTimeout(()=>window.openFamilyDetail('${f.id}'),100)">${f.name}</strong><br><small style="color:var(--muted);">${f.members} members</small></td>
+        <td>${window.fmt(obligation)}</td>
+        <td>${window.fmt(monthly)}</td>
+        <td><span style="color:var(--success);font-weight:700;">${window.fmt(paid)}</span></td>
+        <td><span style="color:var(--warning);font-weight:700;">${window.fmt(famPending)}</span></td>
+        <td><span class="badge badge-warning">${pendingMonths} months</span></td>
+        <td>
+          <div style="background:var(--border);border-radius:4px;height:6px;overflow:hidden;width:80px;">
+            <div style="background:var(--success);height:100%;width:${famPercent}%;"></div>
+          </div>
+          <small>${famPercent.toFixed(0)}%</small>
+        </td>
+      </tr>
+    `;
+  }).join('');
+  
+  const monthBoxes = months.map(m => {
+    const monthPayments = window.data.payments.filter(p => p.taskId === task.id && p.month === m.key);
+    const monthCollected = monthPayments.reduce((s, p) => s + p.amount, 0);
+    const monthExpected = families.reduce((s, f) => s + window.getFamilyMonthlyInstallment(task, f.id), 0);
+    const monthPercent = monthExpected > 0 ? (monthCollected / monthExpected) * 100 : 0;
+    const statusClass = monthPercent >= 100 ? 'paid' : (monthPercent > 0 ? 'partial' : 'pending');
+    const statusText = monthPercent >= 100 ? '✓ Paid' : (monthPercent > 0 ? 'Partial' : 'Pending');
+    
+    return `
+      <div class="month-box ${statusClass}">
+        <div class="mb-label">${m.label}</div>
+        <div class="mb-amount">${window.fmtShort(monthCollected)}</div>
+        <div class="mb-status">${statusText}</div>
+      </div>
+    `;
+  }).join('');
+  
+  const taskPayments = window.data.payments.filter(p => p.taskId === task.id).sort((a,b) => new Date(b.date) - new Date(a.date));
+  const paymentRows = taskPayments.slice(0, 10).map(p => {
+    const family = window.data.families.find(f => f.id === p.familyId);
+    return `
+      <tr>
+        <td>${p.date}</td>
+        <td>${family?family.name:'-'}</td>
+        <td>${p.month || '-'}</td>
+        <td><strong>${window.fmt(p.amount)}</strong></td>
+        <td><span class="badge badge-info">${p.method}</span></td>
+      </tr>
+    `;
+  }).join('');
+  
+  const content = `
+    <div class="detail-header">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <h2>${task.name}</h2>
+          <p>${task.desc || 'No description'}</p>
+        </div>
+        <span class="badge badge-${status==='completed'?'success':status==='partial'?'warning':'danger'}" style="font-size:13px;padding:6px 14px;">${status.toUpperCase()}</span>
+      </div>
+      <div class="detail-stats">
+        <div class="detail-stat">
+          <div class="ds-label">Total Target</div>
+          <div class="ds-value">${window.fmt(total)}</div>
+        </div>
+        <div class="detail-stat">
+          <div class="ds-label">Collected</div>
+          <div class="ds-value">${window.fmt(collected)}</div>
+        </div>
+        <div class="detail-stat">
+          <div class="ds-label">Pending</div>
+          <div class="ds-value">${window.fmt(pending)}</div>
+        </div>
+        <div class="detail-stat">
+          <div class="ds-label">Progress</div>
+          <div class="ds-value">${percent.toFixed(1)}%</div>
+        </div>
+      </div>
+    </div>
+    
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">
+      <div class="mini-stat">
+        <div class="ms-label">Total Members</div>
+        <div class="ms-value">${totalMembers}</div>
+      </div>
+      <div class="mini-stat">
+        <div class="ms-label">Per Member</div>
+        <div class="ms-value">${window.fmt(perMember)}</div>
+      </div>
+      <div class="mini-stat">
+        <div class="ms-label">Duration</div>
+        <div class="ms-value">${task.durationMonths} months</div>
+      </div>
+    </div>
+    
+    <div style="display:flex;gap:12px;margin-bottom:20px;font-size:13px;color:var(--muted);">
+      <span> Start: <strong>${task.startDate}</strong></span>
+      <span>📅 End: <strong>${endDate.toLocaleDateString('en-US', {month:'short', year:'numeric'})}</strong></span>
+      <span>👨‍👩‍👧 Families: <strong>${families.length}</strong></span>
+    </div>
+    
+    <div class="section-divider">📅 Monthly Installment Timeline</div>
+    <div class="month-timeline">${monthBoxes}</div>
+    
+    <div class="section-divider">👨👩‍👧 Family-wise Breakdown</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Family</th>
+          <th>Total Obligation</th>
+          <th>Monthly</th>
+          <th>Paid</th>
+          <th>Pending</th>
+          <th>Months Left</th>
+          <th>Progress</th>
+        </tr>
+      </thead>
+      <tbody>${familyRows}</tbody>
+    </table>
+    
+    <div class="section-divider">💵 Recent Payments</div>
+    ${taskPayments.length > 0 ? `
+      <table>
+        <thead><tr><th>Date</th><th>Family</th><th>Month</th><th>Amount</th><th>Method</th></tr></thead>
+        <tbody>${paymentRows}</tbody>
+      </table>
+    ` : '<p style="text-align:center;color:var(--muted);padding:20px;">No payments yet</p>'}
+    
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="window.closeModal('taskDetailModal')">Close</button>
+      <button class="btn btn-success" onclick="window.closeModal('taskDetailModal');window.quickPayTask('${task.id}')">💵 Record Payment</button>
+      <button class="btn btn-danger" onclick="if(confirm('Delete this task?')){window.deleteTask('${task.id}');window.closeModal('taskDetailModal');}">🗑️ Delete Task</button>
+    </div>
+  `;
+  
+  document.getElementById('taskDetailContent').innerHTML = content;
+  document.getElementById('taskDetailModal').classList.add('active');
 };
 
+// FAMILY DETAIL MODAL - FULL IMPLEMENTATION
 window.openFamilyDetail = function(familyId) {
   const family = window.data.families.find(f => f.id === familyId);
   if (!family) return;
-  alert('Family Detail: ' + family.name + '\n(Full implementation from previous code)');
+  
+  const familyTasks = window.data.tasks.filter(t => {
+    if (t.assignment === 'all') return true;
+    if (t.assignment === 'specific' && t.assignedFamilies && t.assignedFamilies.includes(familyId)) return true;
+    return false;
+  });
+  
+  let totalObligation = 0, totalPaid = 0, totalPending = 0;
+  familyTasks.forEach(t => {
+    const obligation = window.getFamilyTotalObligation(t, familyId);
+    const paid = window.getFamilyPaidForTask(t, familyId);
+    totalObligation += obligation;
+    totalPaid += paid;
+    totalPending += Math.max(0, obligation - paid);
+  });
+  
+  const initial = family.name.charAt(0).toUpperCase();
+  
+  const taskRows = familyTasks.map(t => {
+    const obligation = window.getFamilyTotalObligation(t, familyId);
+    const monthly = window.getFamilyMonthlyInstallment(t, familyId);
+    const paid = window.getFamilyPaidForTask(t, familyId);
+    const pending = Math.max(0, obligation - paid);
+    const pendingMonths = window.getFamilyPendingMonths(t, familyId);
+    const percent = obligation > 0 ? Math.min(100, (paid/obligation)*100) : 0;
+    const status = window.getTaskStatus(t);
+    
+    return `
+      <tr>
+        <td><strong style="cursor:pointer;color:var(--primary);" onclick="window.closeModal('familyDetailModal');setTimeout(()=>window.openTaskDetail('${t.id}'),100)">${t.name}</strong></td>
+        <td>${window.fmt(obligation)}</td>
+        <td>${window.fmt(monthly)}</td>
+        <td><span style="color:var(--success);font-weight:700;">${window.fmt(paid)}</span></td>
+        <td><span style="color:var(--warning);font-weight:700;">${window.fmt(pending)}</span></td>
+        <td><span class="badge badge-warning">${pendingMonths} months</span></td>
+        <td><span class="badge badge-${status==='completed'?'success':status==='partial'?'info':'warning'}">${status}</span></td>
+      </tr>
+    `;
+  }).join('');
+  
+  const familyPayments = window.data.payments.filter(p => p.familyId === familyId).sort((a,b) => new Date(b.date) - new Date(a.date));
+  const paymentRows = familyPayments.map(p => {
+    const task = window.data.tasks.find(t => t.id === p.taskId);
+    return `
+      <tr>
+        <td>${p.date}</td>
+        <td>${task?task.name:'-'}</td>
+        <td>${p.month || '-'}</td>
+        <td><strong>${window.fmt(p.amount)}</strong></td>
+        <td><span class="badge badge-info">${p.method}</span></td>
+        <td><button class="btn btn-sm btn-danger" onclick="if(confirm('Delete?')){window.deletePayment('${p.id}');window.openFamilyDetail('${familyId}');}">🗑️</button></td>
+      </tr>
+    `;
+  }).join('');
+  
+  const content = `
+    <div class="family-detail-header">
+      <div class="family-detail-avatar">${initial}</div>
+      <div style="flex:1;">
+        <h2 style="font-size:22px;margin-bottom:4px;">${family.name}</h2>
+        <p style="opacity:0.9;font-size:13px;">${family.contact || 'No contact'} • 👥 ${family.members} members</p>
+        ${family.phone ? `<p style="opacity:0.9;font-size:13px;"> ${family.phone}</p>` : ''}
+      </div>
+      <button class="btn btn-outline" style="background:rgba(255,255,255,0.2);color:white;border-color:rgba(255,255,255,0.3);" onclick="window.closeModal('familyDetailModal')">✕</button>
+    </div>
+    
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;">
+      <div class="mini-stat">
+        <div class="ms-label">Total Obligation</div>
+        <div class="ms-value">${window.fmt(totalObligation)}</div>
+      </div>
+      <div class="mini-stat success">
+        <div class="ms-label">Total Paid</div>
+        <div class="ms-value">${window.fmt(totalPaid)}</div>
+      </div>
+      <div class="mini-stat warning">
+        <div class="ms-label">Total Pending</div>
+        <div class="ms-value">${window.fmt(totalPending)}</div>
+      </div>
+    </div>
+    
+    <div class="section-divider">📋 Tasks & Installments</div>
+    ${familyTasks.length > 0 ? `
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Total</th>
+            <th>Monthly</th>
+            <th>Paid</th>
+            <th>Pending</th>
+            <th>Months Left</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>${taskRows}</tbody>
+      </table>
+    ` : '<p style="text-align:center;color:var(--muted);padding:20px;">No tasks assigned</p>'}
+    
+    <div class="section-divider"> Payment History</div>
+    ${familyPayments.length > 0 ? `
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Task</th>
+            <th>Month</th>
+            <th>Amount</th>
+            <th>Method</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>${paymentRows}</tbody>
+      </table>
+    ` : '<p style="text-align:center;color:var(--muted);padding:20px;">No payments recorded</p>'}
+    
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="window.closeModal('familyDetailModal')">Close</button>
+      <button class="btn btn-success" onclick="window.closeModal('familyDetailModal');window.quickPayFamily('${familyId}')">💵 Record Payment</button>
+      <button class="btn btn-danger" onclick="if(confirm('Delete this family?')){window.deleteFamily('${familyId}');window.closeModal('familyDetailModal');}">🗑️ Delete Family</button>
+    </div>
+  `;
+  
+  document.getElementById('familyDetailContent').innerHTML = content;
+  document.getElementById('familyDetailModal').classList.add('active');
 };
 
 window.quickPayTask = function(taskId) {
@@ -1735,17 +1957,13 @@ window.quickPayFamily = function(familyId) {
   }, 100);
 };
 
-// ============ INITIALIZATION ============
+// Initialize
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
   
-  // Initialize Firebase listeners
   setupRealtimeListeners();
-  
-  // Load settings
   loadSettings();
   
-  // Hide loading after Firebase connects
   setTimeout(() => {
     showLoading(false);
     document.getElementById('firebaseStatus').textContent = '✓ Connected';
