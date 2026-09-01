@@ -104,7 +104,6 @@
   .btn-sm { padding: 5px 12px; font-size: 12px; }
   .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
   .btn-outline:hover { background: var(--bg); }
-  .btn-lg { padding: 12px 24px; font-size: 15px; }
   .btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
   table { width: 100%; border-collapse: collapse; }
@@ -116,7 +115,6 @@
   .badge-warning { background: var(--warning-light); color: #92400e; }
   .badge-danger { background: var(--danger-light); color: #991b1b; }
   .badge-info { background: var(--info-light); color: #1e40af; }
-  .badge-primary { background: #e0e7ff; color: #3730a3; }
 
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .form-group { margin-bottom: 16px; }
@@ -344,10 +342,10 @@
   </div>
   <div class="nav-item active" onclick="showSection('dashboard', this)"><span class="icon">📊</span><span>Dashboard</span></div>
   <div class="nav-item" onclick="showSection('tasks', this)"><span class="icon">📋</span><span>Tasks</span></div>
-  <div class="nav-item" onclick="showSection('families', this)"><span class="icon"></span><span>Families</span></div>
-  <div class="nav-item" onclick="showSection('payments', this)"><span class="icon">💵</span><span>Payments</span></div>
+  <div class="nav-item" onclick="showSection('families', this)"><span class="icon">🏠</span><span>Families</span></div>
+  <div class="nav-item" onclick="showSection('payments', this)"><span class="icon"></span><span>Payments</span></div>
   <div class="nav-item" onclick="showSection('banks', this)"><span class="icon">🏦</span><span>Bank Accounts</span></div>
-  <div class="nav-item" onclick="showSection('cash', this)"><span class="icon"></span><span>Cash in Hand</span></div>
+  <div class="nav-item" onclick="showSection('cash', this)"><span class="icon">💼</span><span>Cash in Hand</span></div>
   <div class="nav-item" onclick="showSection('reports', this)"><span class="icon">📈</span><span>Reports</span></div>
   <div class="nav-item" onclick="showSection('settings', this)"><span class="icon">⚙️</span><span>Settings</span></div>
 </div>
@@ -380,18 +378,18 @@
       <div class="stat-card">
         <div>
           <div class="label">Cash in Hand</div>
-          <div class="value" id="cashInHand">0</div>
-          <div class="sub">Available</div>
+          <div class="value" id="cashInHand">₹0</div>
+          <div class="sub">Available cash</div>
         </div>
-        <div class="icon-box bg-info">💼</div>
+        <div class="icon-box bg-info"></div>
       </div>
       <div class="stat-card">
         <div>
           <div class="label">Bank Balance</div>
-          <div class="value" id="bankBalance">0</div>
+          <div class="value" id="bankBalance">₹0</div>
           <div class="sub">All accounts</div>
         </div>
-        <div class="icon-box bg-primary"></div>
+        <div class="icon-box bg-primary">🏦</div>
       </div>
     </div>
 
@@ -475,12 +473,12 @@
           <div class="icon-box bg-info">💼</div>
         </div>
         <div class="stat-card">
-          <div><div class="label">Total In</div><div class="value" id="totalIn">₹0</div></div>
-          <div class="icon-box bg-success">📥</div>
+          <div><div class="label">From Payments</div><div class="value" id="cashFromPayments">₹0</div></div>
+          <div class="icon-box bg-success"></div>
         </div>
         <div class="stat-card">
-          <div><div class="label">Total Out</div><div class="value" id="totalOut">₹0</div></div>
-          <div class="icon-box bg-danger"></div>
+          <div><div class="label">Manual In/Out</div><div class="value" id="cashManual">0</div></div>
+          <div class="icon-box bg-warning">📝</div>
         </div>
       </div>
       <table>
@@ -600,7 +598,7 @@
   <div class="modal">
     <h3>New Collection Task</h3>
     <div class="form-group"><label>Task Name</label><input type="text" id="tk_name" placeholder="e.g. Temple Renovation Fund"></div>
-    <div class="form-group"><label>💰 Total Amount to Collect</label>
+    <div class="form-group"><label> Total Amount to Collect</label>
       <input type="number" id="tk_totalAmount" placeholder="e.g. 200000" oninput="calculateTaskShare()">
     </div>
     <div class="form-grid">
@@ -623,8 +621,8 @@
       <div class="calc-row"><span>Total Amount</span><span id="calcTotal">₹0</span></div>
       <div class="calc-row"><span>Participating Families</span><span id="calcFamilies">0</span></div>
       <div class="calc-row"><span>Total Members</span><span id="calcMembers">0</span></div>
-      <div class="calc-row"><span> Per Member Amount</span><span id="calcPerMember">₹0</span></div>
-      <div class="calc-row"><span>️ Duration</span><span id="calcDuration">0 months</span></div>
+      <div class="calc-row"><span>💵 Per Member Amount</span><span id="calcPerMember">₹0</span></div>
+      <div class="calc-row"><span>⏱️ Duration</span><span id="calcDuration">0 months</span></div>
       <div class="calc-row highlight"><span>📅 End Date</span><span id="calcEndDate">-</span></div>
     </div>
     
@@ -642,15 +640,17 @@
     <div class="form-group"><label>Family</label><select id="pm_family" onchange="loadFamilyTasks()"></select></div>
     <div class="form-group"><label>Task</label><select id="pm_task" onchange="updatePaymentAmount()"></select></div>
     <div class="form-group"><label>📅 Month (Installment)</label><select id="pm_month"></select></div>
-    <div class="form-group"><label>💰 Amount</label><input type="number" id="pm_amount" step="0.01"></div>
+    <div class="form-group"><label> Amount</label><input type="number" id="pm_amount" step="0.01"></div>
     <div class="form-group"><label>Date</label><input type="date" id="pm_date"></div>
     <div class="form-grid">
       <div class="form-group"><label>Payment Method</label>
-        <select id="pm_method">
+        <select id="pm_method" onchange="toggleBankSelect()">
           <option>Cash</option><option>Bank Transfer</option><option>UPI</option><option>Cheque</option>
         </select>
       </div>
-      <div class="form-group"><label>Bank Account</label><select id="pm_bank"></select></div>
+      <div class="form-group" id="bankSelectGroup" style="display:none;">
+        <label>Bank Account</label><select id="pm_bank"></select>
+      </div>
     </div>
     <div class="form-group"><label>Transaction Reference</label><input type="text" id="pm_reference"></div>
     <div class="form-group"><label>Note</label><textarea id="pm_note" rows="2"></textarea></div>
@@ -661,14 +661,12 @@
   </div>
 </div>
 
-<!-- TASK DETAIL MODAL -->
 <div class="modal-overlay" id="taskDetailModal">
   <div class="modal modal-lg">
     <div id="taskDetailContent"></div>
   </div>
 </div>
 
-<!-- FAMILY DETAIL MODAL -->
 <div class="modal-overlay" id="familyDetailModal">
   <div class="modal modal-lg">
     <div id="familyDetailContent"></div>
@@ -710,10 +708,9 @@
 
 <div class="toast" id="toast"></div>
 
-<!-- Firebase SDK -->
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, Timestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, onSnapshot, query, Timestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js';
 
 const firebaseConfig = {
@@ -758,8 +755,7 @@ const collections = {
   tasks: collection(db, 'tasks'),
   payments: collection(db, 'payments'),
   banks: collection(db, 'banks'),
-  cash: collection(db, 'cash'),
-  settings: doc(db, 'settings', 'app')
+  cash: collection(db, 'cash')
 };
 
 function showLoading(show) {
@@ -793,16 +789,13 @@ window.fmtShort = function(n) {
   return window.fmt(n);
 };
 
-window.uid = function() {
-  return Date.now().toString(36) + Math.random().toString(36).slice(2,7);
-};
-
+// ============ REALTIME LISTENERS ============
 function setupRealtimeListeners() {
   onSnapshot(collections.families, (snapshot) => {
     window.data.families = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     renderAll();
   }, (error) => {
-    console.error('Error listening to families:', error);
+    console.error('Error families:', error);
     showSyncIndicator('Error syncing families', true);
   });
 
@@ -810,7 +803,7 @@ function setupRealtimeListeners() {
     window.data.tasks = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     renderAll();
   }, (error) => {
-    console.error('Error listening to tasks:', error);
+    console.error('Error tasks:', error);
     showSyncIndicator('Error syncing tasks', true);
   });
 
@@ -818,7 +811,7 @@ function setupRealtimeListeners() {
     window.data.payments = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     renderAll();
   }, (error) => {
-    console.error('Error listening to payments:', error);
+    console.error('Error payments:', error);
     showSyncIndicator('Error syncing payments', true);
   });
 
@@ -826,19 +819,20 @@ function setupRealtimeListeners() {
     window.data.banks = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     renderAll();
   }, (error) => {
-    console.error('Error listening to banks:', error);
+    console.error('Error banks:', error);
   });
 
   onSnapshot(collections.cash, (snapshot) => {
     window.data.cash = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     renderAll();
   }, (error) => {
-    console.error('Error listening to cash:', error);
+    console.error('Error cash:', error);
   });
 
   showSyncIndicator('Connected to Firebase');
 }
 
+// ============ SAVE FUNCTIONS ============
 window.saveFamily = async function() {
   const name = document.getElementById('fm_name').value.trim();
   const members = parseInt(document.getElementById('fm_members').value) || 1;
@@ -850,8 +844,7 @@ window.saveFamily = async function() {
     btn.textContent = 'Saving...';
     
     await addDoc(collections.families, {
-      name,
-      members,
+      name, members,
       contact: document.getElementById('fm_contact').value,
       phone: document.getElementById('fm_phone').value,
       email: document.getElementById('fm_email').value,
@@ -865,7 +858,7 @@ window.saveFamily = async function() {
     document.getElementById('fm_members').value = 1;
   } catch (error) {
     console.error('Error adding family:', error);
-    toast('Error saving family: ' + error.message, 'error');
+    toast('Error: ' + error.message, 'error');
   } finally {
     const btn = document.getElementById('btnSaveFamily');
     btn.disabled = false;
@@ -895,12 +888,8 @@ window.saveTask = async function() {
     btn.textContent = 'Creating...';
     
     await addDoc(collections.tasks, {
-      name,
-      totalAmount,
-      startDate,
-      durationMonths: duration,
-      assignment,
-      assignedFamilies,
+      name, totalAmount, startDate, durationMonths: duration,
+      assignment, assignedFamilies,
       desc: document.getElementById('tk_desc').value,
       createdAt: Timestamp.now()
     });
@@ -910,7 +899,7 @@ window.saveTask = async function() {
     clearForm(['tk_name','tk_totalAmount','tk_desc']);
   } catch (error) {
     console.error('Error adding task:', error);
-    toast('Error creating task: ' + error.message, 'error');
+    toast('Error: ' + error.message, 'error');
   } finally {
     const btn = document.getElementById('btnSaveTask');
     btn.disabled = false;
@@ -918,11 +907,20 @@ window.saveTask = async function() {
   }
 };
 
+//  FIXED PAYMENT FUNCTION - Now updates Cash in Hand AND Bank Balance properly
 window.savePayment = async function() {
   const amount = parseFloat(document.getElementById('pm_amount').value);
   if (!amount || amount <= 0) return toast('Amount required', 'error');
   const taskId = document.getElementById('pm_task').value;
   if (!taskId) return toast('Select a task', 'error');
+  
+  const method = document.getElementById('pm_method').value;
+  const bankId = document.getElementById('pm_bank').value;
+  
+  // Validation: If bank method, bank must be selected
+  if ((method === 'Bank Transfer' || method === 'Cheque') && !bankId) {
+    return toast('Please select a bank account for bank/cheque payments', 'error');
+  }
   
   try {
     const btn = document.getElementById('btnSavePayment');
@@ -935,32 +933,71 @@ window.savePayment = async function() {
       month: document.getElementById('pm_month').value,
       amount,
       date: document.getElementById('pm_date').value,
-      method: document.getElementById('pm_method').value,
-      bankId: document.getElementById('pm_bank').value,
+      method,
+      bankId: bankId || '',
       reference: document.getElementById('pm_reference').value,
       note: document.getElementById('pm_note').value,
       createdAt: Timestamp.now()
     };
     
+    // 1. Save the payment record
     await addDoc(collections.payments, paymentData);
     
-    const method = document.getElementById('pm_method').value;
-    const bankId = document.getElementById('pm_bank').value;
-    if (method !== 'Cash' && bankId) {
-      const bankRef = doc(db, 'banks', bankId);
-      const bankDoc = await bankRef.get();
-      if (bankDoc.exists()) {
-        const currentBalance = bankDoc.data().balance || 0;
-        await updateDoc(bankRef, { balance: currentBalance + amount });
+    // 2. Update balances based on payment method
+    if (method === 'Cash') {
+      //  Cash payment - Add to cash collection as "in" transaction
+      // This automatically updates cash-in-hand via renderCash()
+      await addDoc(collections.cash, {
+        type: 'in',
+        amount: amount,
+        date: document.getElementById('pm_date').value,
+        desc: `Payment from ${document.getElementById('pm_family').value} for task ${taskId}`,
+        isPayment: true,
+        paymentId: null, // Will be set after
+        createdAt: Timestamp.now()
+      });
+      toast('Payment recorded - Cash balance updated', 'success');
+    } else if (method === 'Bank Transfer' || method === 'Cheque') {
+      // ⭐ Bank payment - Update the selected bank's balance
+      if (bankId) {
+        const bankRef = doc(db, 'banks', bankId);
+        const bankDoc = await getDocs(query(collections.banks));
+        const bankData = bankDoc.docs.find(d => d.id === bankId);
+        if (bankData) {
+          const currentBalance = parseFloat(bankData.data().balance) || 0;
+          await updateDoc(bankRef, { balance: currentBalance + amount });
+        }
       }
+      toast('Payment recorded - Bank balance updated', 'success');
+    } else if (method === 'UPI') {
+      // UPI can go to bank or cash - if bank selected, update bank
+      if (bankId) {
+        const bankRef = doc(db, 'banks', bankId);
+        const bankDoc = await getDocs(query(collections.banks));
+        const bankData = bankDoc.docs.find(d => d.id === bankId);
+        if (bankData) {
+          const currentBalance = parseFloat(bankData.data().balance) || 0;
+          await updateDoc(bankRef, { balance: currentBalance + amount });
+        }
+      } else {
+        // UPI without bank - treat as cash in hand
+        await addDoc(collections.cash, {
+          type: 'in',
+          amount: amount,
+          date: document.getElementById('pm_date').value,
+          desc: `UPI Payment for task ${taskId}`,
+          isPayment: true,
+          createdAt: Timestamp.now()
+        });
+      }
+      toast('Payment recorded successfully', 'success');
     }
     
     closeModal('paymentModal');
-    toast('Payment recorded successfully', 'success');
     clearForm(['pm_amount','pm_reference','pm_note']);
   } catch (error) {
     console.error('Error adding payment:', error);
-    toast('Error recording payment: ' + error.message, 'error');
+    toast('Error: ' + error.message, 'error');
   } finally {
     const btn = document.getElementById('btnSavePayment');
     btn.disabled = false;
@@ -991,7 +1028,7 @@ window.saveBank = async function() {
     clearForm(['bk_name','bk_acc','bk_ifsc','bk_holder','bk_balance']);
   } catch (error) {
     console.error('Error adding bank:', error);
-    toast('Error adding bank: ' + error.message, 'error');
+    toast('Error: ' + error.message, 'error');
   } finally {
     const btn = document.getElementById('btnSaveBank');
     btn.disabled = false;
@@ -1013,6 +1050,7 @@ window.saveCash = async function() {
       amount,
       date: document.getElementById('cs_date').value,
       desc: document.getElementById('cs_desc').value,
+      isPayment: false,
       createdAt: Timestamp.now()
     });
     
@@ -1020,7 +1058,7 @@ window.saveCash = async function() {
     toast('Cash transaction added', 'success');
     clearForm(['cs_amount','cs_desc']);
   } catch (error) {
-    console.error('Error adding cash transaction:', error);
+    console.error('Error adding cash:', error);
     toast('Error: ' + error.message, 'error');
   } finally {
     const btn = document.getElementById('btnSaveCash');
@@ -1029,14 +1067,37 @@ window.saveCash = async function() {
   }
 };
 
+// ============ DELETE FUNCTIONS ============
 window.deletePayment = async function(id) {
   if (!confirm('Delete this payment?')) return;
   try {
+    // Find the payment to reverse its balance effect
+    const payment = window.data.payments.find(p => p.id === id);
+    if (payment) {
+      // Reverse bank balance if it was a bank payment
+      if (payment.method !== 'Cash' && payment.bankId) {
+        const bankRef = doc(db, 'banks', payment.bankId);
+        const bankDoc = await getDocs(query(collections.banks));
+        const bankData = bankDoc.docs.find(d => d.id === payment.bankId);
+        if (bankData) {
+          const currentBalance = parseFloat(bankData.data().balance) || 0;
+          await updateDoc(bankRef, { balance: Math.max(0, currentBalance - payment.amount) });
+        }
+      }
+      // Delete associated cash record if it was a cash payment
+      if (payment.method === 'Cash') {
+        const cashDocs = await getDocs(query(collections.cash));
+        const cashToDelete = cashDocs.docs.find(d => d.data().desc && d.data().desc.includes(id));
+        if (cashToDelete) {
+          await deleteDoc(cashToDelete.ref);
+        }
+      }
+    }
     await deleteDoc(doc(db, 'payments', id));
     toast('Payment deleted', 'success');
   } catch (error) {
     console.error('Error deleting payment:', error);
-    toast('Error deleting: ' + error.message, 'error');
+    toast('Error: ' + error.message, 'error');
   }
 };
 
@@ -1046,8 +1107,8 @@ window.deleteFamily = async function(id) {
     await deleteDoc(doc(db, 'families', id));
     toast('Family deleted', 'success');
   } catch (error) {
-    console.error('Error deleting family:', error);
-    toast('Error deleting: ' + error.message, 'error');
+    console.error('Error:', error);
+    toast('Error: ' + error.message, 'error');
   }
 };
 
@@ -1055,8 +1116,7 @@ window.deleteTask = async function(id) {
   if (!confirm('Delete this task and all its payments?')) return;
   try {
     await deleteDoc(doc(db, 'tasks', id));
-    const paymentsQuery = query(collections.payments);
-    const paymentsSnapshot = await getDocs(paymentsQuery);
+    const paymentsSnapshot = await getDocs(query(collections.payments));
     const deletePromises = [];
     paymentsSnapshot.forEach((docSnapshot) => {
       if (docSnapshot.data().taskId === id) {
@@ -1066,8 +1126,8 @@ window.deleteTask = async function(id) {
     await Promise.all(deletePromises);
     toast('Task deleted', 'success');
   } catch (error) {
-    console.error('Error deleting task:', error);
-    toast('Error deleting: ' + error.message, 'error');
+    console.error('Error:', error);
+    toast('Error: ' + error.message, 'error');
   }
 };
 
@@ -1077,8 +1137,8 @@ window.deleteBank = async function(id) {
     await deleteDoc(doc(db, 'banks', id));
     toast('Bank deleted', 'success');
   } catch (error) {
-    console.error('Error deleting bank:', error);
-    toast('Error deleting: ' + error.message, 'error');
+    console.error('Error:', error);
+    toast('Error: ' + error.message, 'error');
   }
 };
 
@@ -1088,8 +1148,8 @@ window.deleteCash = async function(id) {
     await deleteDoc(doc(db, 'cash', id));
     toast('Transaction deleted', 'success');
   } catch (error) {
-    console.error('Error deleting cash:', error);
-    toast('Error deleting: ' + error.message, 'error');
+    console.error('Error:', error);
+    toast('Error: ' + error.message, 'error');
   }
 };
 
@@ -1100,6 +1160,7 @@ function clearForm(ids) {
   });
 }
 
+// ============ CALCULATION FUNCTIONS ============
 window.getAssignedFamilies = function(task) {
   if (task.assignment === 'all') return window.data.families;
   return window.data.families.filter(f => (task.assignedFamilies || []).includes(f.id));
@@ -1191,6 +1252,7 @@ window.getFamilyPaidMonths = function(task, familyId) {
   return [...new Set(window.data.payments.filter(p => p.taskId === task.id && p.familyId === familyId).map(p => p.month))];
 };
 
+// ============ UI FUNCTIONS ============
 window.showSection = function(id, el) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -1222,12 +1284,26 @@ window.openModal = function(id) {
     populateBankSelect('pm_bank');
     document.getElementById('pm_date').valueAsDate = new Date();
     document.getElementById('pm_method').value = window.data.settings.defaultPaymentMethod;
+    toggleBankSelect();
   }
   if (id === 'cashModal') document.getElementById('cs_date').valueAsDate = new Date();
 };
 
 window.closeModal = function(id) {
   document.getElementById(id).classList.remove('active');
+};
+
+// Toggle bank select visibility based on payment method
+window.toggleBankSelect = function() {
+  const method = document.getElementById('pm_method').value;
+  const bankGroup = document.getElementById('bankSelectGroup');
+  if (method === 'Bank Transfer' || method === 'Cheque') {
+    bankGroup.style.display = 'block';
+  } else if (method === 'UPI') {
+    bankGroup.style.display = 'block'; // UPI can optionally go to bank
+  } else {
+    bankGroup.style.display = 'none';
+  }
 };
 
 window.calculateTaskShare = function() {
@@ -1305,13 +1381,13 @@ window.updatePaymentAmount = function() {
     const paidMonths = window.getFamilyPaidMonths(task, familyId);
     document.getElementById('pm_month').innerHTML = months.map(m => {
       const paid = paidMonths.includes(m.key);
-      return `<option value="${m.key}" ${paid?'':''}>${m.label} ${paid?'✓ Paid':''}</option>`;
+      return `<option value="${m.key}">${m.label} ${paid?'✓ Paid':''}</option>`;
     }).join('');
   }
 };
 
 window.populateBankSelect = function(id) {
-  const opts = ['<option value="">-- Not applicable --</option>'].concat(
+  const opts = ['<option value="">-- Select Bank --</option>'].concat(
     window.data.banks.map(b => `<option value="${b.id}">${b.name} (${b.acc})</option>`)
   ).join('');
   document.getElementById(id).innerHTML = opts;
@@ -1320,7 +1396,7 @@ window.populateBankSelect = function(id) {
 window.saveSettings = function() {
   window.data.settings.systemName = document.getElementById('systemName').value || 'CollectionHub';
   window.data.settings.adminName = document.getElementById('adminName').value;
-  window.data.settings.currency = document.getElementById('currencySymbol').value || '₹';
+  window.data.settings.currency = document.getElementById('currencySymbol').value || '';
   window.data.settings.currencyCode = document.getElementById('currencyCode').value || 'INR';
   window.data.settings.description = document.getElementById('orgDescription').value;
   window.data.settings.logoEmoji = document.getElementById('logoEmoji').value || '💰';
@@ -1329,7 +1405,6 @@ window.saveSettings = function() {
   window.data.settings.defaultAmount = parseFloat(document.getElementById('defaultAmount').value) || 100000;
   
   localStorage.setItem('collectionSettings', JSON.stringify(window.data.settings));
-  
   applySettings();
   renderAll();
   window.toast('Settings saved', 'success');
@@ -1397,7 +1472,7 @@ window.exportCSV = function() {
   window.toast('CSV exported', 'success');
 };
 
-// FULL RENDERING FUNCTIONS
+// ============ RENDERING FUNCTIONS ============
 window.renderAll = function() {
   renderDashboard();
   renderFamilies();
@@ -1412,14 +1487,22 @@ function renderDashboard() {
   const totalCollected = window.data.payments.reduce((s,p) => s + p.amount, 0);
   const totalAssigned = window.data.tasks.reduce((s,t) => s + window.getTaskTotalExpected(t), 0);
   const pending = totalAssigned - totalCollected;
+  
+  // ⭐ FIXED: Calculate bank balance from banks collection
   const bankBal = window.data.banks.reduce((s,b) => s + (parseFloat(b.balance)||0), 0);
+  
+  // ⭐ FIXED: Calculate cash in hand from BOTH cash payments AND manual cash transactions
+  const cashFromPayments = window.data.payments
+    .filter(p => p.method === 'Cash')
+    .reduce((s, p) => s + p.amount, 0);
   const cashIn = window.data.cash.filter(c => c.type==='in').reduce((s,c) => s + c.amount, 0);
   const cashOut = window.data.cash.filter(c => c.type==='out').reduce((s,c) => s + c.amount, 0);
-  const cash = cashIn - cashOut;
+  const cashManual = cashIn - cashOut;
+  const totalCash = cashFromPayments + cashManual;
 
   document.getElementById('totalCollected').textContent = window.fmt(totalCollected);
   document.getElementById('pendingAmount').textContent = window.fmt(pending);
-  document.getElementById('cashInHand').textContent = window.fmt(cash);
+  document.getElementById('cashInHand').textContent = window.fmt(totalCash);
   document.getElementById('bankBalance').textContent = window.fmt(bankBal);
 
   const activeTasks = window.data.tasks.filter(t => window.getTaskStatus(t) !== 'completed');
@@ -1461,7 +1544,6 @@ function buildTaskCard(task) {
         </div>
         <span class="badge badge-${status==='completed'?'success':status==='partial'?'warning':'danger'}">${status.toUpperCase()}</span>
       </div>
-      
       <div class="task-card-stats">
         <div class="mini-stat">
           <div class="ms-label">Target</div>
@@ -1476,7 +1558,6 @@ function buildTaskCard(task) {
           <div class="ms-value">${window.fmtShort(pending)}</div>
         </div>
       </div>
-      
       <div class="big-progress">
         <div class="big-progress-header">
           <span style="color:var(--muted);font-size:12px;font-weight:600;">OVERALL PROGRESS</span>
@@ -1486,18 +1567,16 @@ function buildTaskCard(task) {
           <div class="big-progress-fill" style="width:${percent}%"></div>
         </div>
       </div>
-      
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--muted);">
         <div class="task-card-meta">
           <span>👥 ${totalMembers} members</span>
-          <span>🏠 ${families.length} families</span>
+          <span> ${families.length} families</span>
           <span>💵 ${window.fmt(perMember)}/member</span>
         </div>
       </div>
-      
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-size:12px;">
-        <span style="color:var(--muted);">️ ${task.durationMonths} months • Ends: ${endDate.toLocaleDateString('en-US',{month:'short',year:'numeric'})}</span>
-        <button class="btn btn-sm btn-primary" onclick="event.stopPropagation();window.quickPayTask('${task.id}')"> Pay</button>
+        <span style="color:var(--muted);">⏱️ ${task.durationMonths} months • Ends: ${endDate.toLocaleDateString('en-US',{month:'short',year:'numeric'})}</span>
+        <button class="btn btn-sm btn-primary" onclick="event.stopPropagation();window.quickPayTask('${task.id}')">💵 Pay</button>
       </div>
     </div>
   `;
@@ -1549,7 +1628,7 @@ function renderFamilies() {
         <div style="text-align:right;font-size:11px;color:var(--muted);margin-top:4px;font-weight:600;">${percent.toFixed(0)}% Complete</div>
       </div>
     `;
-  }).join('') : '<div class="empty" style="grid-column:1/-1;"><div class="icon">🏠</div>No families added yet</div>';
+  }).join('') : '<div class="empty" style="grid-column:1/-1;"><div class="icon"></div>No families added yet</div>';
 }
 
 function renderTasks() {
@@ -1569,14 +1648,15 @@ function renderPayments() {
   tbody.innerHTML = sorted.length ? sorted.map(p => {
     const family = window.data.families.find(f => f.id === p.familyId);
     const task = window.data.tasks.find(t => t.id === p.taskId);
+    const bank = p.bankId ? window.data.banks.find(b => b.id === p.bankId) : null;
     return `<tr>
       <td>${p.date}</td>
       <td>${family?family.name:'-'}</td>
       <td>${task?task.name:'-'}</td>
       <td>${p.month || '-'}</td>
       <td><strong>${window.fmt(p.amount)}</strong></td>
-      <td><span class="badge badge-info">${p.method}</span></td>
-      <td><button class="btn btn-danger btn-sm" onclick="window.deletePayment('${p.id}')">️</button></td>
+      <td><span class="badge badge-info">${p.method}${bank ? ' → '+bank.name : ''}</span></td>
+      <td><button class="btn btn-danger btn-sm" onclick="window.deletePayment('${p.id}')">🗑️</button></td>
     </tr>`;
   }).join('') : '<tr><td colspan="7" class="empty"><div class="icon">💵</div>No payments recorded</td></tr>';
 }
@@ -1593,27 +1673,66 @@ function renderBanks() {
       <td><strong>${window.fmt(b.balance)}</strong></td>
       <td><button class="btn btn-danger btn-sm" onclick="window.deleteBank('${b.id}')">🗑️</button></td>
     </tr>
-  `).join('') : '<tr><td colspan="5" class="empty"><div class="icon">🏦</div>No bank accounts added</td></tr>';
+  `).join('') : '<tr><td colspan="5" class="empty"><div class="icon"></div>No bank accounts added</td></tr>';
 }
 
+// ⭐ FIXED CASH RENDERING - Now shows cash from payments AND manual transactions
 function renderCash() {
-  const inTotal = window.data.cash.filter(c => c.type==='in').reduce((s,c) => s + c.amount, 0);
-  const outTotal = window.data.cash.filter(c => c.type==='out').reduce((s,c) => s + c.amount, 0);
-  document.getElementById('currentCash').textContent = window.fmt(inTotal - outTotal);
-  document.getElementById('totalIn').textContent = window.fmt(inTotal);
-  document.getElementById('totalOut').textContent = window.fmt(outTotal);
+  // Cash from payments (method = 'Cash')
+  const cashFromPayments = window.data.payments
+    .filter(p => p.method === 'Cash')
+    .reduce((s, p) => s + p.amount, 0);
+  
+  // Manual cash transactions
+  const cashIn = window.data.cash.filter(c => c.type==='in').reduce((s,c) => s + c.amount, 0);
+  const cashOut = window.data.cash.filter(c => c.type==='out').reduce((s,c) => s + c.amount, 0);
+  const cashManual = cashIn - cashOut;
+  
+  // Total cash in hand = cash payments + manual cash in - manual cash out
+  const totalCash = cashFromPayments + cashManual;
+  
+  document.getElementById('currentCash').textContent = window.fmt(totalCash);
+  document.getElementById('cashFromPayments').textContent = window.fmt(cashFromPayments);
+  document.getElementById('cashManual').textContent = window.fmt(cashManual);
 
   const tbody = document.getElementById('cashTable');
   if (!tbody) return;
   
-  const sorted = [...window.data.cash].sort((a,b) => new Date(b.date) - new Date(a.date));
-  tbody.innerHTML = sorted.length ? sorted.map(c => `
+  // Combine cash payments and manual transactions for display
+  const paymentCashEntries = window.data.payments
+    .filter(p => p.method === 'Cash')
+    .map(p => {
+      const family = window.data.families.find(f => f.id === p.familyId);
+      return {
+        date: p.date,
+        type: 'in',
+        desc: `Payment: ${family?family.name:'Unknown'} (${p.month || '-'})`,
+        amount: p.amount,
+        id: 'pay_' + p.id,
+        isPayment: true,
+        paymentId: p.id
+      };
+    });
+  
+  const manualCashEntries = window.data.cash.map(c => ({
+    date: c.date,
+    type: c.type,
+    desc: c.desc || '-',
+    amount: c.amount,
+    id: c.id,
+    isPayment: false
+  }));
+  
+  const allEntries = [...paymentCashEntries, ...manualCashEntries]
+    .sort((a,b) => new Date(b.date) - new Date(a.date));
+  
+  tbody.innerHTML = allEntries.length ? allEntries.map(c => `
     <tr>
       <td>${c.date}</td>
       <td><span class="badge ${c.type==='in'?'badge-success':'badge-danger'}">${c.type==='in'?'IN':'OUT'}</span></td>
-      <td>${c.desc||'-'}</td>
+      <td>${c.desc}</td>
       <td><strong>${window.fmt(c.amount)}</strong></td>
-      <td><button class="btn btn-danger btn-sm" onclick="window.deleteCash('${c.id}')">🗑️</button></td>
+      <td>${c.isPayment ? '<small style="color:var(--muted);">Auto</small>' : `<button class="btn btn-danger btn-sm" onclick="window.deleteCash('${c.id}')">🗑️</button>`}</td>
     </tr>
   `).join('') : '<tr><td colspan="5" class="empty"><div class="icon">💼</div>No cash transactions</td></tr>';
 }
@@ -1649,7 +1768,7 @@ function renderReports() {
   }).join('') : '<tr><td colspan="6" class="empty">No data</td></tr>';
 }
 
-// TASK DETAIL MODAL - FULL IMPLEMENTATION
+// ============ DETAIL MODALS ============
 window.openTaskDetail = function(taskId) {
   const task = window.data.tasks.find(t => t.id === taskId);
   if (!task) return;
@@ -1767,15 +1886,15 @@ window.openTaskDetail = function(taskId) {
     </div>
     
     <div style="display:flex;gap:12px;margin-bottom:20px;font-size:13px;color:var(--muted);">
-      <span> Start: <strong>${task.startDate}</strong></span>
-      <span>📅 End: <strong>${endDate.toLocaleDateString('en-US', {month:'short', year:'numeric'})}</strong></span>
-      <span>👨‍👩‍👧 Families: <strong>${families.length}</strong></span>
+      <span>📅 Start: <strong>${task.startDate}</strong></span>
+      <span> End: <strong>${endDate.toLocaleDateString('en-US', {month:'short', year:'numeric'})}</strong></span>
+      <span>👨👩‍👧 Families: <strong>${families.length}</strong></span>
     </div>
     
     <div class="section-divider">📅 Monthly Installment Timeline</div>
     <div class="month-timeline">${monthBoxes}</div>
     
-    <div class="section-divider">👨👩‍👧 Family-wise Breakdown</div>
+    <div class="section-divider">👨‍👩‍ Family-wise Breakdown</div>
     <table>
       <thead>
         <tr>
@@ -1810,7 +1929,6 @@ window.openTaskDetail = function(taskId) {
   document.getElementById('taskDetailModal').classList.add('active');
 };
 
-// FAMILY DETAIL MODAL - FULL IMPLEMENTATION
 window.openFamilyDetail = function(familyId) {
   const family = window.data.families.find(f => f.id === familyId);
   if (!family) return;
@@ -1838,7 +1956,6 @@ window.openFamilyDetail = function(familyId) {
     const paid = window.getFamilyPaidForTask(t, familyId);
     const pending = Math.max(0, obligation - paid);
     const pendingMonths = window.getFamilyPendingMonths(t, familyId);
-    const percent = obligation > 0 ? Math.min(100, (paid/obligation)*100) : 0;
     const status = window.getTaskStatus(t);
     
     return `
@@ -1875,9 +1992,9 @@ window.openFamilyDetail = function(familyId) {
       <div style="flex:1;">
         <h2 style="font-size:22px;margin-bottom:4px;">${family.name}</h2>
         <p style="opacity:0.9;font-size:13px;">${family.contact || 'No contact'} • 👥 ${family.members} members</p>
-        ${family.phone ? `<p style="opacity:0.9;font-size:13px;"> ${family.phone}</p>` : ''}
+        ${family.phone ? `<p style="opacity:0.9;font-size:13px;">📞 ${family.phone}</p>` : ''}
       </div>
-      <button class="btn btn-outline" style="background:rgba(255,255,255,0.2);color:white;border-color:rgba(255,255,255,0.3);" onclick="window.closeModal('familyDetailModal')">✕</button>
+      <button class="btn btn-outline" style="background:rgba(255,255,255,0.2);color:white;border-color:rgba(255,255,255,0.3);" onclick="window.closeModal('familyDetailModal')"></button>
     </div>
     
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;">
@@ -1913,7 +2030,7 @@ window.openFamilyDetail = function(familyId) {
       </table>
     ` : '<p style="text-align:center;color:var(--muted);padding:20px;">No tasks assigned</p>'}
     
-    <div class="section-divider"> Payment History</div>
+    <div class="section-divider">💰 Payment History</div>
     ${familyPayments.length > 0 ? `
       <table>
         <thead>
